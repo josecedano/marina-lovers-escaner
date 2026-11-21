@@ -9,11 +9,12 @@ button{background:#d9b45a;color:#0f1f3d;border:0;border-radius:12px;padding:16px
 .fr{position:absolute;inset:18%;border:3px solid rgba(255,255,255,.85);border-radius:14px;pointer-events:none}
 #bn{position:fixed;left:12px;right:12px;top:12px;z-index:9;padding:20px;border-radius:16px;font-size:22px;font-weight:800;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.5);display:none}#bn small{display:block;font-size:15px;font-weight:500;margin-top:6px}
 #bn.ok{background:#1f8a3b;color:#fff}#bn.warn{background:#c98a00;color:#fff}#bn.bad{background:#b3261e;color:#fff}
-#msg{margin-top:12px;font-size:15px;opacity:.85}.lnk{background:none;color:#d9b45a;font-size:14px;width:auto;padding:10px;margin-top:8px;font-weight:500}</style></head><body>
+#msg{margin-top:12px;font-size:15px;opacity:.85}.lnk{background:none;color:#d9b45a;font-size:14px;width:auto;padding:10px;margin-top:8px;font-weight:500}#pz{position:fixed;inset:0;background:rgba(10,14,30,.94);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}#pz .bx{background:linear-gradient(135deg,#e0a23a,#c79a4e);color:#161210;border-radius:18px;padding:24px 20px;text-align:center;width:100%;max-width:360px}#pz .k{font-size:12px;letter-spacing:3px;font-weight:700}#pz .t{font-family:Georgia,serif;font-size:30px;font-weight:700;line-height:1.1;margin:8px 0}#pz .n{font-size:17px;font-weight:600}#pz button{display:block;width:100%;border:0;border-radius:30px;padding:15px;font-size:17px;font-weight:700;margin-top:12px}#pz .y{background:#161210;color:#e0a23a}#pz .z{background:transparent;color:#161210;border:2px solid #161210}</style></head><body>
 <h1>Marina <i>Lovers</i> · escáner</h1><p>Registra la visita de un socio</p>
 <div id="login"><input id="pin" type="password" inputmode="numeric" placeholder="PIN del personal" maxlength="8" autocomplete="off"><button id="go">Entrar</button><div id="lerr" style="color:#ff8d84;margin-top:10px"></div></div>
 <div id="cam"><div class="vw"><video id="v" playsinline muted></video><div class="fr"></div></div><div id="msg">Apunta al QR del socio</div><button class="lnk" id="out">Salir</button></div>
 <div id="bn"></div><canvas id="cv" hidden></canvas>
+<div id="pz"><div class="bx"><div class="k">PREMIO GANADO</div><div class="t" id="pzt"></div><div class="n" id="pzn"></div><button class="y" id="pzy">Canjear ahora</button><button class="z" id="pzz">Ahora no</button></div></div>
 <script>(function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -10129,13 +10130,17 @@ async function login(){PIN=$('#pin').value.trim();if(!PIN)return;$('#go').disabl
 let stream,busy=false,last='',lastT=0;
 async function start(){try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});const v=$('#v');v.srcObject=stream;await v.play();tick()}catch(e){$('#msg').textContent='No puedo abrir la cámara. Dale permiso en el navegador.'}}
 function tick(){const v=$('#v');if(v.readyState>=2&&!busy){const c=$('#cv'),w=v.videoWidth,h=v.videoHeight;if(w){const s=Math.min(1,640/w);c.width=w*s;c.height=h*s;const x=c.getContext('2d',{willReadFrequently:true});x.drawImage(v,0,0,c.width,c.height);const d=x.getImageData(0,0,c.width,c.height);const q=jsQR(d.data,d.width,d.height,{inversionAttempts:'dontInvert'});if(q&&q.data)onCode(q.data)}}requestAnimationFrame(tick)}
+function showPrize(c){busy=true;$('#pzt').textContent=c.reward.label+(c.reward.available>1?' (x'+c.reward.available+')':'');$('#pzn').textContent=c.name+' · '+c.code;$('#pz').style.display='flex';try{navigator.vibrate&&navigator.vibrate([200,80,200])}catch(e){}
+ $('#pzy').onclick=async()=>{$('#pzy').disabled=true;const x=await call({action:'redeem',id:c.id,benefit:'premio'});$('#pzy').disabled=false;$('#pz').style.display='none';if(x.ok)banner('ok','✓ Premio canjeado<small>'+esc(c.name)+' · '+esc(c.reward.label)+'</small>');else banner('bad','✕ '+esc(x.error==='ya_canjeado'?'Ya estaba canjeado':'No se pudo canjear'));setTimeout(()=>{busy=false},1500)};
+ $('#pzz').onclick=()=>{$('#pz').style.display='none';setTimeout(()=>{busy=false},1500)}}
+function prog(c){return c.reward&&c.reward.available<1?' · faltan '+c.reward.to_next+' para su premio':''}
 async function onCode(t){let m=String(t).match(/ML-?\d{1,6}/i);if(!m)return;let code=m[0].toUpperCase();if(!/-/.test(code))code=code.replace('ML','ML-');
  if(busy||(code===last&&Date.now()-lastT<6000))return;busy=true;last=code;lastT=Date.now();$('#msg').textContent='Registrando '+code+'…';
  const f=await call({action:'find',q:code});const r=(f.ok&&f.results||[])[0];
  if(!r){banner('bad','✕ No encuentro a '+esc(code));busy=false;return}
- if(r.visited_today){banner('warn','• Ya estaba registrada hoy<small>'+esc(r.name)+' · '+esc(r.code)+' · '+r.visits+' visitas</small>');$('#msg').textContent='Apunta al QR del socio';setTimeout(()=>{busy=false},1500);return}
+ if(r.visited_today){banner('warn','• Ya estaba registrada hoy<small>'+esc(r.name)+' · '+esc(r.code)+' · '+r.visits+' visitas'+prog(r)+'</small>');$('#msg').textContent='Apunta al QR del socio';if(r.reward&&r.reward.available>0){showPrize(r);return}setTimeout(()=>{busy=false},1500);return}
  const v=await call({action:'visit',id:r.id});
- if(v.ok){const c=v.card||r;banner(v.already?'warn':'ok',(v.already?'• Ya estaba registrada hoy':'✓ Visita registrada')+'<small>'+esc(c.name)+' · '+esc(c.code)+' · '+c.visits+' visita'+(c.visits===1?'':'s')+'</small>')}
+ if(v.ok){const c=v.card||r;banner(v.already?'warn':'ok',(v.already?'• Ya estaba registrada hoy':'✓ Visita registrada')+'<small>'+esc(c.name)+' · '+esc(c.code)+' · '+c.visits+' visita'+(c.visits===1?'':'s')+prog(c)+'</small>');if(c.reward&&c.reward.available>0){$('#msg').textContent='Apunta al QR del socio';showPrize(c);return}}
  else banner('bad','✕ '+esc(ERR[v.error]||'No se pudo registrar'));
  $('#msg').textContent='Apunta al QR del socio';setTimeout(()=>{busy=false},1500)}
 $('#go').onclick=login;$('#pin').onkeydown=e=>{if(e.key==='Enter')login()};
