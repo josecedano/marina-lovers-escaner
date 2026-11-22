@@ -418,6 +418,16 @@ body.has-vac .hero{padding-top:calc(110px + var(--vac))}
   .quick a.on{background:var(--gold);color:#1b140f;border-color:var(--gold)}
   html{scroll-padding-top:calc(118px + var(--vac,0px))}
 }
+
+/* MOVIL: la foto del plato se queda fija arriba mientras eliges */
+@media (max-width:980px){
+  .autor-grid,.carta-grid{display:block}
+  .star,.photo3d{position:sticky;top:calc(122px + var(--vac,0px));z-index:6;margin:0 0 18px;padding-bottom:0}
+  .star .photo-card,.photo3d .photo-card{aspect-ratio:auto;height:190px;border-width:4px;box-shadow:0 14px 26px -8px rgba(0,0,0,.65)}
+  .star .photo-card .cap,.photo3d .photo-card .cap{padding:30px 16px 10px;font-size:1rem}
+  .star .tagx{top:10px;left:10px;padding:4px 10px;font-size:.68rem}
+  .carta-grid .tabs{margin-bottom:14px}
+}
 /* RESPONSIVE */
 @media (max-width:1440px){
   .menu,.nav-r .btn{display:none}.burger{display:flex}
@@ -435,7 +445,7 @@ body.has-vac .hero{padding-top:calc(110px + var(--vac))}
   .pains{grid-template-columns:1fr 1fr}.autor-grid,.fam{grid-template-columns:1fr}.fam{padding:28px 22px}.fam .photo-card{margin:0 auto}
   .star .photo-card{max-width:380px;margin:0 auto}.loc{grid-template-columns:1fr}.lc.big{grid-row:auto;min-height:320px}.lc{min-height:240px}
   body.has-vac .hero{padding-top:calc(96px + var(--vac))}
-  .photo3d{position:relative;top:0;max-width:340px;margin:0 auto}
+  .photo3d{max-width:none}
   section{padding:76px 0}
 }
 @media (max-width:640px){
