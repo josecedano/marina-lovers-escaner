@@ -2,59 +2,61 @@
 <html lang="es"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#161210">
+<meta name="theme-color" content="#0f1f3d"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Marina Lovers"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="apple-touch-icon" href="icon-lovers.png"><link rel="icon" href="icon-lovers.png">
 <meta name="robots" content="noindex">
 <title>Marina Lovers · Mi tarjeta</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;1,500;1,700&family=Anton&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;1,500;1,700&family=Anton&family=Montserrat:wght@800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#14265a;--gold:#e0a23a;--cream:#f6eee1;--bg:#161210;--soft:#b9a98f}
+:root{--navy:#1f3b73;--gold:#5ed3c9;--coral:#f2655b;--cream:#ffffff;--bg:#0f1f3d;--soft:#9db3dd}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--cream);font-family:'Source Sans 3',Arial,sans-serif}
 body{min-height:100vh;padding:max(18px,env(safe-area-inset-top)) 16px max(28px,env(safe-area-inset-bottom))}
 .wrap{max-width:440px;margin:0 auto}
 .brand{font-family:'Alegreya',Georgia,serif;font-size:26px;font-weight:700;text-align:center;margin:6px 0 16px}
 .brand i{font-weight:500;color:var(--gold)}
-.card{background:var(--navy);border:1px solid var(--gold);border-radius:16px;overflow:hidden}
-.stripe{display:flex;height:7px}.stripe b{display:block}
-.card .in{padding:16px 22px 18px}
-.row{display:flex;justify-content:space-between;align-items:flex-start}
+.tj{position:relative;container-type:inline-size;width:100%;aspect-ratio:1710/950;border-radius:14px;overflow:hidden;background:#1f3b73;box-shadow:0 8px 28px rgba(0,0,0,.35)}
+.tj>img{position:absolute;inset:0;width:100%;height:100%;display:block}
+.tn{position:absolute;left:2.8cqw;top:14.3cqw;font-family:'Montserrat','Arial Black',Arial,sans-serif;font-weight:800;text-transform:uppercase;font-size:12.9cqw;line-height:9.5cqw;white-space:nowrap;letter-spacing:0}
+.tn .a{color:#5ed3c9}.tn .b{color:#fff}
+.tc{position:absolute;left:4.68cqw;top:40.8cqw;font-family:Arial,Helvetica,'Liberation Sans',sans-serif;font-weight:700;font-size:4.9cqw;line-height:1;color:#fff;white-space:nowrap}
+.td{position:absolute;left:4.68cqw;top:46.5cqw;font-family:Arial,Helvetica,'Liberation Sans',sans-serif;font-weight:700;font-size:2.05cqw;line-height:1;color:#dce6f7;white-space:nowrap;text-transform:uppercase}
+.tq{position:absolute;left:78.4cqw;top:34.5cqw;width:15.5cqw;height:15.5cqw}
+.tq svg{display:block;width:100%;height:100%}
 .lbl{font-size:9px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:700}
-.nm{font-family:'Anton',Impact,sans-serif;text-transform:uppercase;letter-spacing:1px;line-height:1.05;margin-top:12px}
-.nm .a{color:var(--gold)}
-.meta{display:flex;justify-content:space-between;align-items:flex-end;margin-top:14px}
-.code{font-family:'Anton',Impact,sans-serif;font-size:24px;letter-spacing:2px;line-height:1.2}
-.since{font-size:9px;letter-spacing:2px;color:#9fb0d8;text-transform:uppercase}
-h2{font-family:'Alegreya',Georgia,serif;font-style:italic;font-weight:500;font-size:20px;color:#dcb67a;margin:26px 2px 8px}
-.panel{background:#1e1814;border:1px solid #2e2620;border-radius:14px;padding:16px}
-.hearts{display:flex;justify-content:space-between;gap:6px;margin:6px 0 12px}
-.h{flex:1;aspect-ratio:1;max-width:64px;border-radius:50%;border:2px dashed #4a3f33;display:flex;align-items:center;justify-content:center;transition:.4s}
-.h svg{width:56%;height:56%;fill:#4a3f33}
-.h.on{border:2px solid var(--gold);background:rgba(224,162,58,.14)}
-.h.on svg{fill:var(--gold)}
-.h.gift{border-color:#6b5a3f}.h.gift.on{border-color:var(--gold)}
+.rice{display:flex;justify-content:space-between;gap:8px;margin:8px 0 14px}
+.rw{flex:1;text-align:center;max-width:70px}
+.r{width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden;border:2px solid #4a669e;filter:grayscale(1) brightness(.55);transition:.4s}
+.r img{width:100%;height:100%;object-fit:cover;display:block}
+.rw.on .r{filter:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(94,211,201,.18)}
+.rw.gift .r{border-style:dashed;border-color:var(--coral)}
+.rw.gift.on .r{border-style:solid;box-shadow:0 0 0 3px rgba(242,101,91,.3)}
+.rw small{display:block;margin-top:5px;font-size:11px;color:var(--soft);font-weight:600}
+.rw.on small{color:var(--cream)}.rw.gift small{color:var(--coral)}
+h2{font-family:'Alegreya',Georgia,serif;font-style:italic;font-weight:500;font-size:20px;color:#8fe3da;margin:26px 2px 8px}
+.panel{background:#17305f;border:1px solid #2b4a87;border-radius:14px;padding:16px}
 .big{font-size:17px;line-height:1.4}.big b{color:var(--gold)}
-.bar{height:8px;background:#2a221b;border-radius:8px;margin-top:12px;overflow:hidden}
-.bar i{display:block;height:100%;background:linear-gradient(90deg,#3caa35,#e0a23a);border-radius:8px;transition:width .6s}
-.prize{margin-top:14px;background:linear-gradient(135deg,#e0a23a,#c79a4e);color:#161210;border-radius:14px;padding:16px;text-align:center}
+.bar{height:8px;background:#22407a;border-radius:8px;margin-top:12px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#5ed3c9,#f2655b);border-radius:8px;transition:width .6s}
+.prize{margin-top:14px;background:linear-gradient(135deg,#f2655b,#f58a5b);color:#fff;border-radius:14px;padding:16px;text-align:center}
 .prize .t{font-family:'Alegreya',Georgia,serif;font-size:24px;font-weight:700;line-height:1.15}
 .prize .s{font-size:14px;margin-top:6px;font-weight:600}
 .qr{background:#fff;border-radius:14px;padding:14px;display:flex;justify-content:center;margin:0 auto;width:fit-content}
 .qr svg{display:block;width:190px;height:190px}
 .cap{text-align:center;color:var(--soft);font-size:13px;margin-top:10px}
-.ben{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-top:1px solid #2e2620;font-size:15px}
+.ben{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-top:1px solid #2b4a87;font-size:15px}
 .ben:first-child{border-top:0}
 .ben small{display:block;color:var(--soft);font-size:12px;margin-top:2px}
 .pill{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 9px;border-radius:20px;white-space:nowrap;align-self:flex-start}
-.pill.disponible{background:#1f8a3b;color:#fff}.pill.canjeado{background:#3a3128;color:var(--soft)}.pill.no_hoy{background:#2a221b;color:var(--soft)}
+.pill.disponible{background:#1f9d7a;color:#fff}.pill.canjeado{background:#2c4a85;color:var(--soft)}.pill.no_hoy{background:#22407a;color:var(--soft)}
 .hist{display:flex;flex-wrap:wrap;gap:8px}
-.hist span{background:#2a221b;border-radius:20px;padding:6px 12px;font-size:13px;color:#e9dcc6}
-.foot{text-align:center;color:#8a7c68;font-size:12px;line-height:1.6;margin-top:26px}
-.demo{margin:0 0 14px;background:#2a2113;border:1px dashed var(--gold);border-radius:12px;padding:10px 12px;font-size:13px;color:#e9dcc6;text-align:center}
-.demo button{background:#2a221b;color:var(--cream);border:1px solid #4a3f33;border-radius:20px;padding:7px 12px;margin:6px 3px 0;font:inherit;font-size:13px}
-.demo button.on{background:var(--gold);color:#161210;border-color:var(--gold);font-weight:700}
+.hist span{background:#22407a;border-radius:20px;padding:6px 12px;font-size:13px;color:#e8eefc}
+.foot{text-align:center;color:#7f96c4;font-size:12px;line-height:1.6;margin-top:26px}
+.demo{margin:0 0 14px;background:#22407a;border:1px dashed var(--gold);border-radius:12px;padding:10px 12px;font-size:13px;color:#e8eefc;text-align:center}
+.demo button{background:#22407a;color:var(--cream);border:1px solid #4a669e;border-radius:20px;padding:7px 12px;margin:6px 3px 0;font:inherit;font-size:13px}
+.demo button.on{background:var(--gold);color:#0f1f3d;border-color:var(--gold);font-weight:700}
 .err{text-align:center;padding:40px 10px;font-size:17px;line-height:1.5}
-.upd{text-align:center;font-size:11px;color:#6f6252;margin-top:10px}
+.upd{text-align:center;font-size:11px;color:#7f96c4;margin-top:10px}
 </style></head>
 <body><div class="wrap" id="app"><div class="brand">Marina <i>Lovers</i></div><div class="err" id="load">Cargando tu tarjeta…</div></div>
 <script>
@@ -1676,12 +1678,12 @@ var qrcode = function() {
 <script>
 const API='https://bewchtpixasdqlqhnovd.supabase.co/functions/v1/socios-api';
 const Q=new URLSearchParams(location.search);
-const CODE=(Q.get('c')||'').toUpperCase(), KEY=Q.get('k')||'';
+let CODE=(Q.get('c')||'').toUpperCase(), KEY=Q.get('k')||'';
+try{if(CODE&&KEY)localStorage.setItem('ml',JSON.stringify({c:CODE,k:KEY}));else{const s=JSON.parse(localStorage.getItem('ml')||'null');if(s&&s.c&&s.k){CODE=s.c;KEY=s.k}}}catch(e){}
 let DEMO=Q.has('demo')?Math.max(0,parseInt(Q.get('demo'),10)||0):(CODE&&KEY?null:1);
 const EVERY=5,LABEL='Arroz gratis para 2';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const HEART='<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
 function fdate(d){try{const [y,m,dd]=d.split('-');return dd+'/'+m+'/'+y}catch(e){return d}}
 function demoData(n){
   const earned=Math.floor(n/EVERY),inc=n%EVERY,avail=earned;
@@ -1707,7 +1709,7 @@ function qrSvg(text){
 function render(d){
   const r=d.reward,inc=r.in_cycle,avail=r.available;
   let hearts='';
-  for(let i=0;i<r.every;i++){const on=i<inc||(avail>0&&inc===0);hearts+='<div class="h'+(on?' on':'')+(i===r.every-1?' gift':'')+'">'+HEART+'</div>'}
+  for(let i=0;i<r.every;i++){const on=i<inc||(avail>0&&inc===0),g=i===r.every-1;hearts+='<div class="rw'+(on?' on':'')+(g?' gift':'')+'"><div class="r"><img src="arroz.jpg" alt=""></div><small>'+(g?'Gratis':(i+1))+'</small></div>'}
   const since=new Date(d.since).toLocaleDateString('es-ES',{month:'short',year:'numeric'}).replace('.','');
   const link=location.origin+location.pathname+'?c='+encodeURIComponent(d.code)+(KEY&&DEMO===null?'&k='+encodeURIComponent(KEY):'');
   const prize=avail>0?'<div class="prize"><div class="t">¡Tienes '+(avail===1?'1 '+esc(r.label.toLowerCase()):avail+' premios: '+esc(r.label.toLowerCase()))+'!</div><div class="s">Díselo a tu camarero y enséñale esta pantalla</div></div>':'';
@@ -1716,17 +1718,24 @@ function render(d){
   const ben=d.benefits.map(b=>'<div class="ben"><div>'+esc(b.label)+'<small>'+esc(b.note)+'</small></div><span class="pill '+esc(b.state)+'">'+(b.state==='disponible'?'Disponible':b.state==='canjeado'?'Canjeado':'No hoy')+'</span></div>').join('');
   const hist=(d.history&&d.history.length)?'<h2>Tus visitas</h2><div class="panel"><div class="hist">'+d.history.map(x=>'<span>'+fdate(x)+'</span>').join('')+'</div><div class="cap" style="text-align:left;margin-top:12px">Total: '+d.visits+' visita'+(d.visits===1?'':'s')+'</div></div>':'';
   const demo=DEMO!==null?'<div class="demo">Vista de prueba con datos ficticios<br>'+[0,1,3,4,5,7,10].map(n=>'<button class="'+(n===DEMO?'on':'')+'" onclick="setDemo('+n+')">'+n+' visita'+(n===1?'':'s')+'</button>').join('')+'</div>':'';
-  $('#app').innerHTML='<div class="brand">Marina <i>Lovers</i></div>'+demo+
-  '<div class="card"><div class="stripe"><b style="flex:55;background:#3caa35"></b><b style="flex:30;background:#2a55b3"></b><b style="flex:15;background:#e30613"></b></div><div class="in">'+
-  '<div class="row"><div style="font-family:Alegreya,Georgia,serif;font-size:25px;font-weight:700">Marina <i style="font-weight:500;color:var(--gold)">Lovers</i></div><div class="lbl">Socio</div></div>'+
-  nameHtml(d.name)+'<div class="meta"><div><div class="lbl">Nº socio</div><div class="code">'+esc(d.code)+'</div><div class="since">Desde '+esc(since.charAt(0).toUpperCase()+since.slice(1))+'</div></div></div></div></div>'+
+  $('#app').innerHTML=demo+
+  '<div class="tj"><img src="tarjeta-base.png" alt="Tarjeta Marina Lovers"><div class="tn" id="tn"></div><div class="tc">'+esc(d.code)+'</div><div class="td">Desde '+esc(since.toUpperCase().replace('.',''))+'</div><div class="tq">'+qrSvg(link)+'</div></div>'+
   '<h2>Tu premio</h2><div class="panel"><div class="cap" style="margin:0 0 6px;text-align:left">Cada '+r.every+' visitas, <b style="color:var(--cream)">'+esc(r.label.toLowerCase())+'</b> de regalo</div>'+
-  '<div class="hearts">'+hearts+'</div><div class="big">'+falta+'</div><div class="bar"><i style="width:'+pct+'%"></i></div>'+prize+'</div>'+
+  '<div class="rice">'+hearts+'</div><div class="big">'+falta+'</div><div class="bar"><i style="width:'+pct+'%"></i></div>'+prize+'</div>'+
   '<h2>Tu QR</h2><div class="panel"><div class="qr">'+qrSvg(link)+'</div><div class="cap">Enséñalo al llegar y registramos tu visita</div></div>'+
   '<h2>Tus ventajas</h2><div class="panel" style="padding:6px 16px">'+ben+'</div>'+hist+
   '<div class="foot">Arrocería La Marina<br>Camí del Palasiet, 31 · Benidorm<br>¿Alergias o intolerancias? Avisa a tu camarero.</div>'+
   '<div class="upd" id="upd"></div>';
-  stamp();
+  fitName(d.name);stamp();
+}
+function fitName(full){
+  const el=$('#tn'),box=$('.tj');if(!el||!box)return;
+  const p=String(full).trim().split(/\s+/),a=p[0]||'',b=p.slice(1).join(' ');
+  el.innerHTML='<div class="a">'+esc(a)+'</div>'+(b?'<div class="b">'+esc(b)+'</div>':'');
+  const apply=()=>{el.style.fontSize='';el.style.lineHeight='';el.style.top='';
+    const w=Math.max.apply(null,[].map.call(el.children,c=>c.getBoundingClientRect().width)),max=box.clientWidth*0.53;
+    if(w>max){const k=max/w;el.style.fontSize=(12.9*k)+'cqw';el.style.lineHeight=(9.5*k)+'cqw';el.style.top=(23.7-9.38*k)+'cqw'}};
+  apply();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(apply);
 }
 function setDemo(n){DEMO=n;render(demoData(n));window.scrollTo({top:0})}
 let last=0;
