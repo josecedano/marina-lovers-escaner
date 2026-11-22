@@ -407,6 +407,17 @@ body.has-vac .hero{padding-top:calc(110px + var(--vac))}
 #algList span{display:inline-flex;align-items:center;gap:6px}
 #algList i{font-style:normal;font-size:.62rem;font-weight:700;min-width:18px;height:18px;border-radius:99px;display:inline-flex;align-items:center;justify-content:center;background:#1c3d86;color:#f6eee1}
 .alg-key small{display:block;font-size:.76rem}
+
+/* BARRA RAPIDA (aparece al bajar; solo donde el menu es desplegable) */
+.quick{display:none}
+@media (max-width:1440px){
+  .nav.solid .quick{display:block;border-top:1px solid var(--line)}
+  .quick .wrap{display:flex;gap:8px;overflow-x:auto;padding-top:8px;padding-bottom:9px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .quick .wrap::-webkit-scrollbar{display:none}
+  .quick a{flex:0 0 auto;font-size:.82rem;font-weight:600;color:var(--cream);border:1px solid var(--line);border-radius:999px;padding:7px 14px;white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+  .quick a.on{background:var(--gold);color:#1b140f;border-color:var(--gold)}
+  html{scroll-padding-top:calc(118px + var(--vac,0px))}
+}
 /* RESPONSIVE */
 @media (max-width:1440px){
   .menu,.nav-r .btn{display:none}.burger{display:flex}
@@ -515,6 +526,14 @@ body.has-vac .hero{padding-top:calc(110px + var(--vac))}
       <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
     </div>
   </div>
+  <nav class="quick" id="quick" aria-label="Accesos rápidos"><div class="wrap">
+    <a href="#autor" data-en="Rice">Arroces</a>
+    <a href="#ejecutivo" data-en="Set lunch">Menú ejecutivo</a>
+    <a href="#carta" data-en="Menu">Carta</a>
+    <a href="#grupos" data-en="Events">Eventos</a>
+    <a href="#lovers" class="lv-link" data-en="Marina Lovers">Marina Lovers</a>
+    <a href="#reservas" data-en="Contact">Contacto</a>
+  </div></nav>
 </header>
 
 <main id="inicio">
@@ -1310,6 +1329,13 @@ if(!d.reviews||d.reviews.length<3)return;
 var e=function(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;')};
 t.innerHTML=d.reviews.map(function(r){return '<figure class="rv"><div class="rv-s">★★★★★</div><blockquote>'+e(r.body)+'</blockquote><figcaption>'+e(r.author)+' · Google</figcaption></figure>'}).join('');
 }).catch(function(){});})();
+
+/* --- barra rapida: seccion activa --- */
+(()=>{const q=document.getElementById('quick');if(!q)return;const links=[...q.querySelectorAll('a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const upd=()=>{let cur=null;const y=innerHeight*0.35;secs.forEach(sec=>{const r=sec.getBoundingClientRect();if(r.top<=y&&r.bottom>y)cur=sec.id});
+links.forEach(a=>{const on=a.getAttribute('href')==='#'+cur;if(on!==a.classList.contains('on')){a.classList.toggle('on',on);if(on){const w=q.querySelector('.wrap');w.scrollTo({left:a.offsetLeft-w.clientWidth/2+a.clientWidth/2,behavior:'smooth'})}}})};
+addEventListener('scroll',upd,{passive:true});upd();})();
 </script>
 </body>
 </html>
