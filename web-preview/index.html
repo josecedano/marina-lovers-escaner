@@ -74,7 +74,6 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;padding:110px 0 64px;background:#0d0a08}
 .hero-bg{position:absolute;inset:0;will-change:transform}
 .hero-bg video,.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
-.hero-bg video.wide{width:auto;aspect-ratio:1/1;display:block;margin:0 auto;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);object-fit:contain;object-position:50% 50%;position:relative;z-index:1}.hero-bg video.bgblur{position:absolute;inset:0;object-fit:cover;filter:blur(26px) brightness(.75);transform:scale(1.2);z-index:0}
 .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(13,10,8,.92) 0%,rgba(13,10,8,.55) 38%,rgba(13,10,8,.12) 70%,rgba(13,10,8,.35) 100%)}
 .hero-grid{position:relative;z-index:2;display:block}
 .hero-txt{max-width:780px}
@@ -567,7 +566,7 @@ body.has-vac .hero{padding-top:calc(110px + var(--vac))}
 <main id="inicio">
 <!-- HERO -->
 <section class="hero" style="padding-bottom:70px">
-  <div class="hero-bg" id="heroBg"><video autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg" aria-hidden="true"><source src="vid/hero-v2.mp4" type="video/mp4"></video><script>(function(){try{var v=document.querySelector('#heroBg video');if(v&&matchMedia('(min-aspect-ratio:1/1)').matches){v.classList.add('wide');v.querySelector('source').src='vid/hero-wide.mp4';v.load();var b=v.cloneNode(true);b.classList.remove('wide');b.classList.add('bgblur');b.setAttribute('aria-hidden','true');v.parentNode.insertBefore(b,v);b.load();}}catch(e){}})();</script></div>
+  <div class="hero-bg" id="heroBg"><video autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg" aria-hidden="true"><source src="vid/hero-v3.mp4" type="video/mp4"></video></div>
   <div class="wrap hero-grid">
     <div class="hero-txt">
       <div class="eyebrow"><span class="tri"><i></i><i></i><i></i></span><span data-en="Rice & barbecue · Benidorm">Arrocería &amp; Barbacoa · Benidorm</span></div>
